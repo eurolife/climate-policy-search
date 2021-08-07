@@ -1,7 +1,23 @@
-import '../styles/app.scss'
+import '../styles/app.scss';
+import { useEffect } from 'react';
+import { Provider } from 'react-redux';
+import { useStore } from '../store';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+const MyApp = ({ Component, pageProps }) => {
 
-export default MyApp
+  const store = useStore(pageProps);
+
+  useEffect(() => {
+    if (window?.Cypress) {
+      window.store = store;
+    }
+  }, [store])
+
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  );
+};
+
+export default MyApp;
