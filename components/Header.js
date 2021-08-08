@@ -17,7 +17,7 @@ const Header = ({showFilter, sectors}) => {
   }
   const values = sectors.map((item) => ({value: `${item.name}`, label: `${item.name} (${item.policy_ids.length})`}))
   return (
-    <header className="h-64 lg:h-80 px-4">
+    <header className="h-72 lg:h-80 px-4">
       <div className="container relative h-full flex flex-col justify-end items-center md:flex-row md:justify-start">
         <Link href="/">
           <a className="block absolute top-0">

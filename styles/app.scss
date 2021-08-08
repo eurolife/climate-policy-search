@@ -33,7 +33,11 @@ body {
     min-height: 150px;
   }
 }
-
+// pagination
+.pagination button {
+  height: 30px;
+  width: 30px;
+}
 // spinner
 .lds-ring {
   display: inline-block;

@@ -34,7 +34,6 @@ const Policy = () => {
 
   return (
     <section>
-      {console.log(status)}
       <Head>
         <title>Climate Policy - {policy?.policy_title}</title>
         <meta name="description" content="Climate Policy - Policy Title" />

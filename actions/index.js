@@ -28,7 +28,6 @@ export const updateMetadata = (data) => (dispatch, getState) => {
   dispatch(setStatus({loading: true, processed: false}));
   // simulate latency
   setTimeout(() => {
-    console.log(getState().status)
     dispatch(setMetadata(data))
     // set processed to true to temporarily show a success message
     dispatch(setStatus({loading: false, processed: true}));

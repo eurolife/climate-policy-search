@@ -10,7 +10,6 @@ const csvToJson = (csv, debug) => {
   for(let i=(start);i<lines.length;i++){
     const obj = {};
 
-    // console.log(lines[i])
     const currentline = handleCommas(lines[i])
 
     //const currentline=lines[i].split(",");
