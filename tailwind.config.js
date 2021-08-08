@@ -10,10 +10,13 @@ module.exports = {
       lightgrey: '#ccc',
       grey: '#999',
       red: '#ff0000',
+      whitetrans: 'rgba(255,255,255, 0.5)',
+      green: 'darkgreen',
       // brand
       blue: '#0e74b1',
       darkblue: '#0d0475',
       lightblue: '#3d9ccf',
+      xlightblue: '#b2f3fc',
       brown: '#4e2f1a',
       lightbrown: '#e0af74',
     },

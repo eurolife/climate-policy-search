@@ -1,14 +1,14 @@
 import ListItem from './ListItem';
 
-const List = () => {
+const List = ({items}) => {
   return (
     <ul>
-      <li className="mt-6">
-        <ListItem title="Policy Title lksjf lkjsf lsjfsk" url="policy" sectors={['Agriculture', 'Energy']} />
-      </li>
-      <li className="mt-6">
-        <ListItem title="Policy Blah blah blah" url="policy" sectors={['Agriculture', 'Economy-wide', 'Health']} />
-      </li>
+      {items?.map((item, index) => (
+        <li key={index} className="mt-6">
+          <ListItem id={item.policy_id} title={item.policy_title} text={item.description_text} sectors={item.sectors.split(';')} />
+        </li>
+      ))}
+      
     </ul>
   )
 }

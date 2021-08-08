@@ -8,7 +8,7 @@ const policiesReducer = (state = initialState.policies, action) => {
       case types.SET_POLICIES:
         return draft = action.data;
       case types.UPDATE_METADATA:
-        // action.data = object {id, organisation, location, date, concerns}
+        // payload = object {id, organisation, location, date, concerns}
         const { id, organisation, location, date, concerns } = action.data;
         const policy = draft.find((policy) => policy.policy_id === id);
         policy.organisation = organisation;
