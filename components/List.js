@@ -17,7 +17,6 @@ const List = ({items, perPage, pageNumber}) => {
   }, [items, pageNumber])
 
   useEffect(() => {
-    console.log(start, end)
   }, [start, end])
   return (
     <ul>

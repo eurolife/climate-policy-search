@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 
 const Header = ({showFilter, sectors}) => {
   const router = useRouter();
+  const sector = router.query?.sectorName;
+
   const handleSelect = (e) => {
     e.preventDefault();
     const val = e.currentTarget.value;
@@ -13,7 +15,11 @@ const Header = ({showFilter, sectors}) => {
   }
   const handleSearch = (e, query) => {
     e.preventDefault();
-    router.push(`/search?q=${query}`);
+    let url = `/search?q=${query}`;
+    if(sector) {
+      url += `&sector=${sector}`
+    }
+    router.push(url);
   }
   const values = sectors.map((item) => ({value: `${item.name}`, label: `${item.name} (${item.policy_ids.length})`}))
   return (

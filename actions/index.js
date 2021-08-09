@@ -2,6 +2,7 @@ import * as types from './actionTypes';
 import csvToJson from '../helpers/csv-to-json';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
+import sortData from '../helpers/sort';
 
 export const setPolicies = (data) => ({
   type: types.SET_POLICIES,
@@ -77,7 +78,8 @@ export const getSectors = (data) => (dispatch, getState) =>  {
       }
     })
   })
-  dispatch(setSectors(arr));
+  const sortedArray = sortData(arr, 'name');
+  dispatch(setSectors(sortedArray));
   dispatch(setStatus({...status, loading: false}));
 }
 

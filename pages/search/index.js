@@ -6,16 +6,24 @@ import List from '../../components/List';
 import useGetAllData from '../../hooks/useGetAllData';
 import useKeywordSearch from '../../hooks/useKeywordSearch';
 import useGetPages from '../../hooks/useGetPages';
+import useGetPolicies from '../../hooks/useGetPolicies';
 import { useRouter } from 'next/router';
 import Pagination from '../../components/Pagination';
 
 const Search = () => {
   const [pageNumber, setPageNumber] = useState(1);
+  
+
   const perPage = 20;
   const [policies, sectors, status] = useGetAllData();
+
   const router = useRouter()
   const query = router.query.q;
+  const sector = router.query.sector;
+
   const [getByKeywords, searchResults] = useKeywordSearch();
+  const [getBySector, filteredPolicies] = useGetPolicies(policies);
+
   const [getPages, pageCount] = useGetPages();
 
   const onChange = (page) => {
@@ -24,10 +32,21 @@ const Search = () => {
   }
 
   useEffect(() => {
-    if(policies?.length) {
+    if(policies?.length && !sector) {
       getByKeywords(policies, query);
+      return;
     }
-  }, [policies, query])
+    if(filteredPolicies?.length) {
+      getByKeywords(filteredPolicies, query);
+    }
+    
+  }, [policies, filteredPolicies, query])
+
+  useEffect(() => {
+    if(sector) {
+      getBySector(sector)
+    }
+  }, [sector])
 
   useEffect(() => {
     if(searchResults?.length > 0) {
@@ -43,7 +62,7 @@ const Search = () => {
         <meta name="description" content="Search climate policies" />
       </Head>
       <Main showFilter sectors={sectors}>
-        <Heading size={2} extraClasses="text-darkblue">{searchResults?.length} results for "{query}"</Heading>
+        <Heading size={2} extraClasses="text-darkblue">{searchResults?.length} results for "{query}" {sector && `in ${sector}`}</Heading>
         {policies?.length && searchResults?.length === 0 &&
           <p className="font-bold text-lg text-center py-6">No policies match your search.</p>
         }
