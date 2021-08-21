@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/example/public_html/cpr.winkletdev.com/
+    - /bin/cp -R .next $DEPLOYPATH
