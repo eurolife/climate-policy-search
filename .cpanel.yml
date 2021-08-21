@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/example/public_html/cpr.winkletdev.com/
+    - export DEPLOYPATH=/home/winkletuk/public_html/cpr.winkletdev.com/
     - /bin/cp -R public $DEPLOYPATH
